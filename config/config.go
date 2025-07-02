@@ -180,10 +180,15 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 		switch out.Type {
 		case C.TypeDirect, C.TypeBlock, C.TypeDNS:
 			continue
-		case C.TypeSelector, C.TypeURLTest:
+		case C.TypeSelector:
 			continue
 		case C.TypeCustom:
 			continue
+		case C.TypeURLTest:
+			if out.Tag == OutboundURLTestTag {
+				continue
+			}
+			fallthrough
 		default:
 			if !strings.Contains(out.Tag, "§hide§") {
 				tags = append(tags, out.Tag)
