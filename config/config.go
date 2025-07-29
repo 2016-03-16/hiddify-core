@@ -222,7 +222,7 @@ func setOutbounds(options *option.Options, input *option.Options, opt *HiddifyOp
 		Type: C.TypeSelector,
 		Tag:  OutboundSelectTag,
 		SelectorOptions: option.SelectorOutboundOptions{
-			Outbounds:                 append([]string{urlTest.Tag}, tags...),
+			Outbounds:                 append([]string{urlTest.Tag, OutboundDirectTag}, tags...),
 			Default:                   defaultSelect,
 			InterruptExistConnections: true,
 		},
